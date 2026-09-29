@@ -6,5 +6,4 @@ and `docs/WSL_SETUP.md` for how to run the pipeline.
 
     npm ci && npx playwright install chromium && npm run test:ai
 
-More: `docs/STATE.md` (what exists today), `docs/agents.md` (writing tickets),
-`docs/WSL_SETUP.md` (running the pipeline).
+Current state of the app and the pipeline: `docs/STATE.md`.

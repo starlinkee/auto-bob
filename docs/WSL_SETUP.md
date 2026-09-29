@@ -34,7 +34,8 @@ see `docs/STATE.md` for what exists today.
    source ~/.bashrc
    ```
 4. **Pre-answer Claude Code's one-time prompts. Mandatory before the first ticket.**
-   Worker panes run headless, so a prompt nobody answers stalls the run: the
+   Log in to `claude` first (step 3). Worker panes run headless, so a prompt
+   nobody answers stalls the run: the
    first AUTO-1 attempt sat 10 minutes with no events, was stopped by
    `stall_timeout_ms`, and the retry ended in 8 seconds as
    `success_unverified_branch_unchanged`. Trust the folders and answer the
@@ -42,13 +43,14 @@ see `docs/STATE.md` for what exists today.
    ```bash
    python3 - <<'EOF'
    import json, os
-   p = os.path.expanduser('~/.claude.json'); d = json.load(open(p))
+   p = os.path.expanduser('~/.claude.json'); d = json.load(open(p)) if os.path.exists(p) else {}
    for k in ['~/auto-bob', '~/auto-bob/workspaces']:
        d.setdefault('projects', {}).setdefault(os.path.expanduser(k), {})['hasTrustDialogAccepted'] = True
    json.dump(d, open(p, 'w'), indent=2)
    EOF
    mkdir -p ~/auto-bob/workspaces/_prompts
-   tmux new-session -d -s prompts -x 200 -y 50 -c ~/auto-bob/workspaces/_prompts \n     "env -u TMUX -u TMUX_PANE claude --dangerously-skip-permissions --model sonnet; sleep 300"
+   tmux new-session -d -s prompts -x 200 -y 50 -c ~/auto-bob/workspaces/_prompts \
+     "env -u TMUX -u TMUX_PANE claude --dangerously-skip-permissions --model sonnet; sleep 300"
    sleep 15; tmux capture-pane -p -t prompts        # shows the question, e.g. "Try the new fullscreen renderer?"
    tmux send-keys -t prompts 2 Enter                # answer it (2 = Not now); repeat until you see the input box
    tmux send-keys -t prompts "/exit" Enter; rm -rf ~/auto-bob/workspaces/_prompts

@@ -84,5 +84,5 @@ Do not activate dependents yourself. In an earlier run of this pipeline, depende
 ## 6. Verify and report
 
 - Check the script's final table: every ticket is in the expected state with the expected blockers.
-- A minute later, check that only the root tickets started: run the Linear query again, and `wsl -d auto-bob -e bash -ic 'cd <repo> && bash scripts/cb status'`. If a dependent is running or is showing repeated `task failed` retries, move it back to Backlog and tell the user.
+- A minute later, check that only the root tickets started: run the Linear query again, and `wsl -d auto-bob -e bash -ic 'cd ~/auto-bob && bash scripts/cb status'`. If a dependent is running or is showing repeated `task failed` retries, move it back to Backlog and tell the user.
 - Report to the user: the feature idea in two or three sentences, the tree as an ASCII diagram with the identifiers, why it is shaped that way (parallel leaves, conflict avoidance), and anything that went wrong along the way.
