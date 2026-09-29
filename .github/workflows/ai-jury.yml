@@ -110,7 +110,7 @@ jobs:
           BASE: ${{ needs.pr.outputs.base }}
           SHA: ${{ needs.pr.outputs.sha }}
         run: git -C pr diff "origin/$BASE...$SHA" -- . ':(exclude)package-lock.json' > pr_diff.txt
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
       - uses: actions/setup-node@v4
