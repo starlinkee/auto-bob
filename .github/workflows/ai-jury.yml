@@ -99,7 +99,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
           path: pr
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         continue-on-error: true  # no artifact = the tests job broke; run_jury.py posts no verdict
         with:
           name: tests
