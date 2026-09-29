@@ -174,18 +174,62 @@ test.describe("fleet catalogue", () => {
   });
 
   test("URL with several parameters restores every control", async ({ page }) => {
-    const m = machines.find((x) => x.available && x.operatorAvailable) ?? machines[0]!;
-    const url = `/fleet?category=${m.category}&available=1&operator=1&sort=price-desc&q=${encodeURIComponent(m.manufacturer)}`;
-    await page.goto(url);
-    await expect(page.locator("#fleet-category")).toHaveValue(m.category);
-    await expect(page.locator("#fleet-available")).toBeChecked();
-    await expect(page.locator("#fleet-operator")).toBeChecked();
-    await expect(page.locator("#fleet-sort")).toHaveValue("price-desc");
-    await expect(page.locator("#fleet-search")).toHaveValue(m.manufacturer);
-    const before = await cardNames(page).allTextContents();
-    expect(before.length).toBeGreaterThan(0);
+    const classOf = (table: Record<string, (n: number) => boolean>, v: number | null) =>
+      v === null ? undefined : Object.keys(table).find((id) => table[id]!(v));
+    const withSpecs = machines.filter(
+      (x) => operatingWeightKg(x) !== null && enginePowerKw(x) !== null,
+    );
+    const m =
+      withSpecs.find((x) => x.available && x.operatorAvailable) ?? withSpecs[0] ?? machines[0]!;
+    const weight = classOf(WEIGHT, operatingWeightKg(m)) ?? "gt-20t";
+    const power = classOf(POWER, enginePowerKw(m)) ?? "gt-75kw";
+    const q = m.manufacturer;
+    const sort = "price-desc";
+    const params = new URLSearchParams({
+      q,
+      category: m.category,
+      weight,
+      power,
+      available: "1",
+      operator: "1",
+      sort,
+    });
+    const expected = machines
+      .filter((x) => {
+        const kg = operatingWeightKg(x);
+        const kw = enginePowerKw(x);
+        return (
+          [x.name, x.manufacturer, x.model].some((v) =>
+            v.toLowerCase().includes(q.toLowerCase()),
+          ) &&
+          x.category === m.category &&
+          kg !== null &&
+          WEIGHT[weight]!(kg) &&
+          kw !== null &&
+          POWER[power]!(kw) &&
+          x.available &&
+          x.operatorAvailable
+        );
+      })
+      .sort(
+        (a, b) => fromPrice(b.pricing) - fromPrice(a.pricing) || a.name.localeCompare(b.name, "en"),
+      );
+
+    const expectRestored = async () => {
+      await expect(page.locator("#fleet-search")).toHaveValue(q);
+      await expect(page.locator("#fleet-category")).toHaveValue(m.category);
+      await expect(page.locator("#fleet-weight")).toHaveValue(weight);
+      await expect(page.locator("#fleet-power")).toHaveValue(power);
+      await expect(page.locator("#fleet-available")).toBeChecked();
+      await expect(page.locator("#fleet-operator")).toBeChecked();
+      await expect(page.locator("#fleet-sort")).toHaveValue(sort);
+      await expectCards(page, expected);
+    };
+
+    await page.goto(`/fleet?${params.toString()}`);
+    await expectRestored();
     await page.reload();
-    expect(await cardNames(page).allTextContents()).toEqual(before);
+    await expectRestored();
     await expectNoA11yViolations(page);
   });
 
