@@ -51,7 +51,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ needs.pr.outputs.sha }}
           fetch-depth: 0
@@ -89,11 +89,11 @@ jobs:
       contents: read
       statuses: write  # the required `jury-review` status, set on the PR head (run_jury.py)
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           path: _trusted
           persist-credentials: false
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ needs.pr.outputs.sha }}
           fetch-depth: 0
