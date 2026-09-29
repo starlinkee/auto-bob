@@ -1,0 +1,182 @@
+[
+  {
+    "id": "machines-1",
+    "image": {
+      "src": null,
+      "alt": "Compact excavator trenching in clay soil"
+    },
+    "caption": "Compact excavator trenching in clay soil",
+    "category": "machines"
+  },
+  {
+    "id": "job-sites-1",
+    "image": {
+      "src": null,
+      "alt": "Foundation trench dug for a new garage"
+    },
+    "caption": "Foundation trench dug for a new garage",
+    "category": "job-sites"
+  },
+  {
+    "id": "delivery-1",
+    "image": {
+      "src": null,
+      "alt": "Low-loader unloading an excavator at the gate"
+    },
+    "caption": "Low-loader unloading an excavator at the gate",
+    "category": "delivery"
+  },
+  {
+    "id": "team-1",
+    "image": {
+      "src": null,
+      "alt": "Workshop technician servicing a hydraulic hose"
+    },
+    "caption": "Workshop technician servicing a hydraulic hose",
+    "category": "team"
+  },
+  {
+    "id": "machines-2",
+    "image": {
+      "src": null,
+      "alt": "Telehandler lifting pallets to a second floor"
+    },
+    "caption": "Telehandler lifting pallets to a second floor",
+    "category": "machines"
+  },
+  {
+    "id": "job-sites-2",
+    "image": {
+      "src": null,
+      "alt": "Landscaping crew grading a residential garden"
+    },
+    "caption": "Landscaping crew grading a residential garden",
+    "category": "job-sites"
+  },
+  {
+    "id": "delivery-2",
+    "image": {
+      "src": null,
+      "alt": "Delivery truck arriving at a city site"
+    },
+    "caption": "Delivery truck arriving at a city site",
+    "category": "delivery"
+  },
+  {
+    "id": "team-2",
+    "image": {
+      "src": null,
+      "alt": "Customer advisor explaining a rental agreement"
+    },
+    "caption": "Customer advisor explaining a rental agreement",
+    "category": "team"
+  },
+  {
+    "id": "machines-3",
+    "image": {
+      "src": null,
+      "alt": "Skid steer levelling a gravel drive"
+    },
+    "caption": "Skid steer levelling a gravel drive",
+    "category": "machines"
+  },
+  {
+    "id": "job-sites-3",
+    "image": {
+      "src": null,
+      "alt": "Road repair with a plate compactor"
+    },
+    "caption": "Road repair with a plate compactor",
+    "category": "job-sites"
+  },
+  {
+    "id": "delivery-3",
+    "image": {
+      "src": null,
+      "alt": "Trailer with two mini diggers ready to leave"
+    },
+    "caption": "Trailer with two mini diggers ready to leave",
+    "category": "delivery"
+  },
+  {
+    "id": "team-3",
+    "image": {
+      "src": null,
+      "alt": "The depot crew in front of the fleet"
+    },
+    "caption": "The depot crew in front of the fleet",
+    "category": "team"
+  },
+  {
+    "id": "machines-4",
+    "image": {
+      "src": null,
+      "alt": "Mini dumper loaded with topsoil"
+    },
+    "caption": "Mini dumper loaded with topsoil",
+    "category": "machines"
+  },
+  {
+    "id": "job-sites-4",
+    "image": {
+      "src": null,
+      "alt": "Demolition of a brick outbuilding"
+    },
+    "caption": "Demolition of a brick outbuilding",
+    "category": "job-sites"
+  },
+  {
+    "id": "delivery-4",
+    "image": {
+      "src": null,
+      "alt": "Driver securing straps before departure"
+    },
+    "caption": "Driver securing straps before departure",
+    "category": "delivery"
+  },
+  {
+    "id": "team-4",
+    "image": {
+      "src": null,
+      "alt": "Mechanic checking an engine before dispatch"
+    },
+    "caption": "Mechanic checking an engine before dispatch",
+    "category": "team"
+  },
+  {
+    "id": "machines-5",
+    "image": {
+      "src": null,
+      "alt": "Scissor lift raised beside a warehouse wall"
+    },
+    "caption": "Scissor lift raised beside a warehouse wall",
+    "category": "machines"
+  },
+  {
+    "id": "job-sites-5",
+    "image": {
+      "src": null,
+      "alt": "Drainage pipes laid along a farm track"
+    },
+    "caption": "Drainage pipes laid along a farm track",
+    "category": "job-sites"
+  },
+  {
+    "id": "delivery-5",
+    "image": {
+      "src": null,
+      "alt": "Crane truck placing a container on site"
+    },
+    "caption": "Crane truck placing a container on site",
+    "category": "delivery"
+  },
+  {
+    "id": "team-5",
+    "image": {
+      "src": null,
+      "alt": "Safety briefing for first-time operators"
+    },
+    "caption": "Safety briefing for first-time operators",
+    "category": "team"
+  }
+]
