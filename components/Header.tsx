@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { HeaderNav } from "@/components/HeaderNav";
 import { getSite, telHref } from "@/lib/site";
 
@@ -20,6 +21,7 @@ export function Header() {
         </Link>
         <HeaderNav />
         <div id="header-actions" className="order-2 flex items-center gap-2 lg:order-3 lg:ml-auto">
+          <ThemeToggle />
           <a
             id="header-phone"
             href={telHref(site.phone)}
