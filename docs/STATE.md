@@ -4,24 +4,24 @@ Status as of 2026-09-29. Update this file when the app or the pipeline changes.
 
 ## The app
 
-A minimal Node 22 web app with no runtime dependencies. `npm start` runs
-`node src/server.js` on `$PORT` (default 3000).
+BuildRent, the marketing and quote site of a construction machinery rental company.
+Next.js App Router + TypeScript (strict) + Tailwind CSS v4. Pages live in `app/`, shared
+components in `components/` (primitives in `components/ui/`), site data in `content/site.json`
+read through `lib/site.ts`.
+
+Run it: `npm ci && npm run build && npx next start -p $PORT` (`scripts/app_sync.sh` does this on
+master; `npm run dev` for development).
 
 | Route | What it serves |
 |-------|----------------|
-| `/` | Home: `<h1 id="greeting">Hello, world!</h1>` |
-| `/about` | About page (`#about-title`, `#about-text`), added by AUTO-1 (PR #1) |
+| `/` | Temporary home: `#home-title` and a hero image placeholder (replaced by the home ticket) |
 | `/health` | GET only, JSON `{status, uptimeSeconds, version}`; other methods return 405 |
-| `/static/*` | `.css` and `.js` files from `src/static/`, path traversal is rejected with 404 |
-| anything else | styled 404 page (`#not-found`) |
+| anything else | `app/not-found.tsx` (`#not-found`) inside the page shell |
 
-Source: `src/server.js` (routing), `src/site.js` (pages map and static files),
-`src/layout.js` (page shell and nav: Home, About), `src/health.js`,
-`src/about-page.js`, `src/static/styles.css`.
-
-Tests: Playwright, `npm run test:ai`, 13 tests (`health` 6, `hello` 1, `layout` 3,
-`about` 3). Each run starts its own server on a port derived from the working
-directory.
+Tests: `npm run test:ai` runs lint, typecheck, Prettier check, Vitest unit tests
+(`tests/unit/`) and Playwright specs (`tests/*.spec.ts`). Each Playwright run builds the app and
+starts its own server on a port derived from the working directory. The About page from AUTO-1
+was removed by the foundation migration.
 
 ## The pipeline
 
@@ -49,7 +49,7 @@ retargeted to this repo. See `docs/agents.md` for how tickets are written and
 
 | Ticket | State | What |
 |--------|-------|------|
-| AUTO-1 | Done | About page, PR #1, the pipeline smoke test |
+| AUTO-1 | Done | About page (removed again by the AUTO-3 foundation), PR #1, the pipeline smoke test |
 | AUTO-2 | Backlog | Follow-up: the jury's non-blocking remark on PR #1 (`tests/about.spec.js` finds the Home link with a substring match; use an exact role match). Starts only if moved to Todo |
 
 ## Smoke test result (AUTO-1)

@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./helpers/fixtures";
 import { readFileSync } from "node:fs";
 
 const { version } = JSON.parse(readFileSync("package.json", "utf8"));
@@ -22,9 +22,3 @@ for (const method of ["POST", "PUT", "PATCH", "DELETE"]) {
     expect(res.status()).toBe(405);
   });
 }
-
-test("/ still renders the greeting", async ({ request }) => {
-  const res = await request.get("/");
-  expect(res.status()).toBe(200);
-  expect(await res.text()).toContain("Hello, world!");
-});

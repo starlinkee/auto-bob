@@ -13,17 +13,28 @@ const port = Number(process.env.PORT || 3000 + (hash % 5000));
 // does not always reach the browser process when agents run the tests.
 const libs = `${os.homedir()}/.local/playwright-libs/usr/lib/x86_64-linux-gnu`;
 const browserEnv = fs.existsSync(libs)
-  ? { ...process.env, LD_LIBRARY_PATH: [libs, process.env.LD_LIBRARY_PATH].filter(Boolean).join(":") }
+  ? {
+      ...process.env,
+      LD_LIBRARY_PATH: [libs, process.env.LD_LIBRARY_PATH].filter(Boolean).join(":"),
+    }
   : undefined;
 
 export default defineConfig({
   testDir: "tests",
+  testMatch: "**/*.spec.ts",
+  testIgnore: "tests/unit/**",
   fullyParallel: false,
   retries: 0,
   use: { baseURL: `http://localhost:${port}`, headless: true, launchOptions: { env: browserEnv } },
   webServer: {
-    command: "node src/server.js",
-    env: { PORT: String(port) },
+    command: `npm run build && npx next start -p ${port}`,
+    timeout: 300000,
+    env: {
+      PORT: String(port),
+      ENABLE_TEST_ENDPOINTS: "1",
+      NEXT_TELEMETRY_DISABLED: "1",
+      NEXT_PUBLIC_SITE_URL: `http://localhost:${port}`,
+    },
     url: `http://localhost:${port}`,
     reuseExistingServer: false,
   },

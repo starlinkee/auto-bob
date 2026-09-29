@@ -14,7 +14,7 @@ export PORT="${PORT:-3001}"
 INTERVAL="${APP_SYNC_INTERVAL:-30}"
 pid=""
 log() { echo "$(date +%H:%M:%S) $*"; }
-start_app() { node src/server.js & pid=$!; log "app started (pid $pid, $(git rev-parse --short HEAD))"; }
+start_app() { (npm ci && npm run build && exec npx next start -p "$PORT") & pid=$!; log "app started (pid $pid, $(git rev-parse --short HEAD))"; }
 stop_app() { [ -n "$pid" ] && kill "$pid" 2>/dev/null && wait "$pid" 2>/dev/null; pid=""; }
 trap 'stop_app; exit 0' TERM INT HUP
 

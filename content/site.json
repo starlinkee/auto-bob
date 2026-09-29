@@ -1,0 +1,30 @@
+{
+  "name": "BuildRent",
+  "tagline": "Construction machinery rental",
+  "phone": "+48 600 100 200",
+  "email": "biuro@buildrent.example",
+  "address": {
+    "street": "ul. Budowlana 12",
+    "postalCode": "00-001",
+    "city": "Warszawa",
+    "country": "Poland"
+  },
+  "geo": { "lat": 52.2297, "lng": 21.0122 },
+  "hours": [
+    { "days": "Monday – Friday", "open": "07:00 – 17:00" },
+    { "days": "Saturday", "open": "08:00 – 13:00" },
+    { "days": "Sunday", "open": "Closed" }
+  ],
+  "serviceArea": "Warsaw and the surrounding region, delivery within 100 km.",
+  "socials": [
+    { "label": "Facebook", "url": "https://www.facebook.com/buildrent.example" },
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/company/buildrent-example" },
+    { "label": "YouTube", "url": "https://www.youtube.com/@buildrent-example" }
+  ],
+  "stats": [
+    { "label": "Years in business", "value": "15" },
+    { "label": "Machines available", "value": "120+" },
+    { "label": "Projects served", "value": "2,500+" },
+    { "label": "Delivery time", "value": "24 h" }
+  ]
+}
