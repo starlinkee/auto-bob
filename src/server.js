@@ -2,6 +2,7 @@ import http from "node:http";
 import { layout } from "./layout.js";
 import { handleRequest } from "./site.js";
 import { handleHealth } from "./health.js";
+import { renderAboutPage } from "./about-page.js";
 
 export function renderPage() {
   return layout({
@@ -16,7 +17,7 @@ http
   .createServer(async (req, res) => {
     try {
       if (new URL(req.url, "http://localhost").pathname === "/health") return handleHealth(req, res);
-      await handleRequest(req, res, { "/": renderPage });
+      await handleRequest(req, res, { "/": renderPage, "/about": renderAboutPage });
     } catch {
       if (!res.headersSent) res.writeHead(500, { "content-type": "application/json" });
       res.end(JSON.stringify({ error: "internal error" }));

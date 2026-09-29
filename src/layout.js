@@ -15,7 +15,7 @@ export function layout({ title, body, head = "" }) {
   </head>
   <body>
     <header class="site-header">
-      <nav><a href="/">Home</a></nav>
+      <nav><a href="/">Home</a> <a id="about-link" href="/about">About</a></nav>
     </header>
     <main>${body}</main>
   </body>
