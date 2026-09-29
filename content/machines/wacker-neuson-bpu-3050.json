@@ -1,0 +1,84 @@
+{
+  "slug": "wacker-neuson-bpu-3050",
+  "name": "Wacker Neuson BPU 3050 Plate Compactor",
+  "category": "compactor",
+  "manufacturer": "Wacker Neuson",
+  "model": "BPU 3050",
+  "year": 2023,
+  "featured": false,
+  "available": true,
+  "operatorRequired": false,
+  "operatorAvailable": false,
+  "shortDescription": "Reversible plate compactor for pavers, gravel and trenches.",
+  "description": "A 150 kg reversible vibratory plate with a 500 mm working width. Delivers dependable compaction for patios, paths and backfill.",
+  "images": [
+    {
+      "src": null,
+      "alt": "Wacker Neuson BPU 3050 plate compactor on gravel"
+    }
+  ],
+  "specs": {
+    "operatingWeightKg": 150,
+    "enginePowerKw": 3.5,
+    "fuelType": "petrol",
+    "emissionStandard": "EU Stage V",
+    "dimensionsMm": {
+      "length": 1100,
+      "width": 500,
+      "height": 1000
+    },
+    "drumWidthMm": 500,
+    "centrifugalForceKn": 30,
+    "frequencyHz": 95,
+    "workingWidthMm": 500
+  },
+  "features": ["Reversible", "Low hand-arm vibration"],
+  "included": [
+    "Fuel-filled on delivery",
+    "Basic operator briefing",
+    "Insurance against third-party damage"
+  ],
+  "notIncluded": [
+    "Fuel during the rental",
+    "Transport to and from site unless booked",
+    "Damage caused by misuse"
+  ],
+  "pricing": {
+    "currency": "PLN",
+    "vatRate": 0.23,
+    "deposit": 800,
+    "tiers": [
+      {
+        "fromDays": 1,
+        "toDays": 1,
+        "perDay": 220
+      },
+      {
+        "fromDays": 2,
+        "toDays": 3,
+        "perDay": 200
+      },
+      {
+        "fromDays": 4,
+        "toDays": 7,
+        "perDay": 180
+      },
+      {
+        "fromDays": 8,
+        "toDays": 30,
+        "perDay": 160
+      },
+      {
+        "fromDays": 31,
+        "toDays": null,
+        "perDay": 140
+      }
+    ],
+    "extras": {
+      "operatorPerDay": null,
+      "deliveryPerKm": 4,
+      "extraHour": 30
+    }
+  },
+  "datasheetUrl": null
+}

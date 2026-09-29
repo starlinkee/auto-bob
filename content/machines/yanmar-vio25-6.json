@@ -1,0 +1,87 @@
+{
+  "slug": "yanmar-vio25-6",
+  "name": "Yanmar ViO25-6 Mini Excavator",
+  "category": "excavator",
+  "manufacturer": "Yanmar",
+  "model": "ViO25-6",
+  "year": 2023,
+  "featured": false,
+  "available": true,
+  "operatorRequired": false,
+  "operatorAvailable": true,
+  "shortDescription": "2.5 t mini excavator that fits through a standard garden gate.",
+  "description": "A compact 2.5 tonne mini excavator with reduced tail swing. Trailer-transportable behind a car, perfect for drainage, utilities and garden works.",
+  "images": [
+    {
+      "src": null,
+      "alt": "Yanmar ViO25-6 mini excavator working beside a house"
+    }
+  ],
+  "specs": {
+    "operatingWeightKg": 2600,
+    "enginePowerKw": 14.6,
+    "fuelType": "diesel",
+    "emissionStandard": "EU Stage V",
+    "dimensionsMm": {
+      "length": 4000,
+      "width": 1550,
+      "height": 2450
+    },
+    "bucketCapacityM3": 0.07,
+    "maxDiggingDepthM": 2.7,
+    "maxReachM": 4.8,
+    "maxDumpHeightM": 3.3,
+    "trackWidthMm": 300,
+    "tailSwing": "reduced",
+    "quickCoupler": false
+  },
+  "features": ["Retractable undercarriage", "Low ground pressure rubber tracks"],
+  "included": [
+    "Fuel-filled on delivery",
+    "Basic operator briefing",
+    "Insurance against third-party damage"
+  ],
+  "notIncluded": [
+    "Fuel during the rental",
+    "Transport to and from site unless booked",
+    "Damage caused by misuse"
+  ],
+  "pricing": {
+    "currency": "PLN",
+    "vatRate": 0.23,
+    "deposit": 3000,
+    "tiers": [
+      {
+        "fromDays": 1,
+        "toDays": 1,
+        "perDay": 620
+      },
+      {
+        "fromDays": 2,
+        "toDays": 3,
+        "perDay": 560
+      },
+      {
+        "fromDays": 4,
+        "toDays": 7,
+        "perDay": 500
+      },
+      {
+        "fromDays": 8,
+        "toDays": 30,
+        "perDay": 450
+      },
+      {
+        "fromDays": 31,
+        "toDays": null,
+        "perDay": 400
+      }
+    ],
+    "extras": {
+      "operatorPerDay": 420,
+      "deliveryPerKm": 5,
+      "extraHour": 90
+    }
+  },
+  "datasheetUrl": null
+}

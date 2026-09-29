@@ -1,0 +1,84 @@
+{
+  "slug": "manitou-mt-1030",
+  "name": "Manitou MT 1030 Telehandler",
+  "category": "telehandler",
+  "manufacturer": "Manitou",
+  "model": "MT 1030",
+  "year": 2022,
+  "featured": true,
+  "available": true,
+  "operatorRequired": false,
+  "operatorAvailable": true,
+  "shortDescription": "10 m telehandler with 3 t capacity for lifting materials to height.",
+  "description": "A fixed telescopic handler that reaches 10 metres and lifts 3 tonnes. Perfect for roofing, scaffolding and moving pallets around site.",
+  "images": [
+    {
+      "src": null,
+      "alt": "Manitou MT 1030 telehandler lifting a pallet"
+    }
+  ],
+  "specs": {
+    "operatingWeightKg": 7200,
+    "enginePowerKw": 55,
+    "fuelType": "diesel",
+    "emissionStandard": "EU Stage V",
+    "dimensionsMm": {
+      "length": 4900,
+      "width": 2100,
+      "height": 2200
+    },
+    "maxLiftHeightM": 10,
+    "maxCapacityKg": 3000,
+    "maxReachM": 6.3,
+    "attachmentOptions": ["Pallet forks", "Bucket", "Lifting jib", "Work platform"]
+  },
+  "features": ["Four-wheel steering", "Frame levelling", "Load moment indicator"],
+  "included": [
+    "Fuel-filled on delivery",
+    "Basic operator briefing",
+    "Insurance against third-party damage"
+  ],
+  "notIncluded": [
+    "Fuel during the rental",
+    "Transport to and from site unless booked",
+    "Damage caused by misuse"
+  ],
+  "pricing": {
+    "currency": "PLN",
+    "vatRate": 0.23,
+    "deposit": 7000,
+    "tiers": [
+      {
+        "fromDays": 1,
+        "toDays": 1,
+        "perDay": 1100
+      },
+      {
+        "fromDays": 2,
+        "toDays": 3,
+        "perDay": 1000
+      },
+      {
+        "fromDays": 4,
+        "toDays": 7,
+        "perDay": 900
+      },
+      {
+        "fromDays": 8,
+        "toDays": 30,
+        "perDay": 820
+      },
+      {
+        "fromDays": 31,
+        "toDays": null,
+        "perDay": 740
+      }
+    ],
+    "extras": {
+      "operatorPerDay": 450,
+      "deliveryPerKm": 7,
+      "extraHour": 130
+    }
+  },
+  "datasheetUrl": null
+}

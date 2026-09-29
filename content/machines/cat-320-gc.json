@@ -1,0 +1,92 @@
+{
+  "slug": "cat-320-gc",
+  "name": "CAT 320 GC Excavator",
+  "category": "excavator",
+  "manufacturer": "Caterpillar",
+  "model": "320 GC",
+  "year": 2021,
+  "featured": true,
+  "available": false,
+  "operatorRequired": true,
+  "operatorAvailable": true,
+  "shortDescription": "22 t crawler excavator for heavy earthmoving and large foundations.",
+  "description": "A 22 tonne crawler excavator built for bulk excavation, road building and demolition support. Supplied with an experienced operator because of its size and site-safety requirements.",
+  "images": [
+    {
+      "src": null,
+      "alt": "CAT 320 GC crawler excavator loading a truck"
+    }
+  ],
+  "specs": {
+    "operatingWeightKg": 22100,
+    "enginePowerKw": 103,
+    "fuelType": "diesel",
+    "emissionStandard": "EU Stage V",
+    "dimensionsMm": {
+      "length": 9500,
+      "width": 2990,
+      "height": 3000
+    },
+    "transportDimensionsMm": {
+      "length": 9500,
+      "width": 2990,
+      "height": 3000
+    },
+    "bucketCapacityM3": 1.19,
+    "maxDiggingDepthM": 6.7,
+    "maxReachM": 9.9,
+    "maxDumpHeightM": 6.7,
+    "trackWidthMm": 600,
+    "tailSwing": "conventional",
+    "quickCoupler": true
+  },
+  "features": ["Grade-assist ready cab", "Rear-view camera", "Heavy-duty undercarriage"],
+  "included": [
+    "Fuel-filled on delivery",
+    "Basic operator briefing",
+    "Insurance against third-party damage"
+  ],
+  "notIncluded": [
+    "Fuel during the rental",
+    "Transport to and from site unless booked",
+    "Damage caused by misuse"
+  ],
+  "pricing": {
+    "currency": "PLN",
+    "vatRate": 0.23,
+    "deposit": 15000,
+    "tiers": [
+      {
+        "fromDays": 1,
+        "toDays": 1,
+        "perDay": 1900
+      },
+      {
+        "fromDays": 2,
+        "toDays": 3,
+        "perDay": 1750
+      },
+      {
+        "fromDays": 4,
+        "toDays": 7,
+        "perDay": 1600
+      },
+      {
+        "fromDays": 8,
+        "toDays": 30,
+        "perDay": 1450
+      },
+      {
+        "fromDays": 31,
+        "toDays": null,
+        "perDay": 1300
+      }
+    ],
+    "extras": {
+      "operatorPerDay": 480,
+      "deliveryPerKm": 9,
+      "extraHour": 220
+    }
+  },
+  "datasheetUrl": "https://www.cat.com/en_US/products/new/equipment/excavators.html"
+}

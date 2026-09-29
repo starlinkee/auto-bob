@@ -1,0 +1,78 @@
+{
+  "slug": "indeco-hp-700",
+  "name": "Indeco HP 700 Hydraulic Breaker",
+  "category": "attachment",
+  "manufacturer": "Indeco",
+  "model": "HP 700",
+  "year": 2022,
+  "featured": false,
+  "available": true,
+  "operatorRequired": false,
+  "operatorAvailable": false,
+  "shortDescription": "Hydraulic breaker for 3–5 t excavators.",
+  "description": "A 90 kg hydraulic breaker for breaking concrete slabs, footings and masonry. Supplied with a moil point and hoses.",
+  "images": [
+    {
+      "src": null,
+      "alt": "Indeco HP 700 hydraulic breaker attachment"
+    }
+  ],
+  "specs": {
+    "dimensionsMm": {
+      "length": 1250,
+      "width": 300,
+      "height": 300
+    },
+    "compatibleMachines": ["Kubota KX057-4", "Yanmar ViO25-6"],
+    "weightKg": 90
+  },
+  "features": ["Moil point included", "Anti-blank-firing protection"],
+  "included": [
+    "Fuel-filled on delivery",
+    "Basic operator briefing",
+    "Insurance against third-party damage"
+  ],
+  "notIncluded": [
+    "Fuel during the rental",
+    "Transport to and from site unless booked",
+    "Damage caused by misuse"
+  ],
+  "pricing": {
+    "currency": "PLN",
+    "vatRate": 0.23,
+    "deposit": 1500,
+    "tiers": [
+      {
+        "fromDays": 1,
+        "toDays": 1,
+        "perDay": 250
+      },
+      {
+        "fromDays": 2,
+        "toDays": 3,
+        "perDay": 230
+      },
+      {
+        "fromDays": 4,
+        "toDays": 7,
+        "perDay": 210
+      },
+      {
+        "fromDays": 8,
+        "toDays": 30,
+        "perDay": 190
+      },
+      {
+        "fromDays": 31,
+        "toDays": null,
+        "perDay": 170
+      }
+    ],
+    "extras": {
+      "operatorPerDay": null,
+      "deliveryPerKm": 4,
+      "extraHour": 40
+    }
+  },
+  "datasheetUrl": null
+}

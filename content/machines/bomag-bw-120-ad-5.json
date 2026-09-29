@@ -1,0 +1,84 @@
+{
+  "slug": "bomag-bw-120-ad-5",
+  "name": "BOMAG BW 120 AD-5 Tandem Roller",
+  "category": "roller",
+  "manufacturer": "BOMAG",
+  "model": "BW 120 AD-5",
+  "year": 2021,
+  "featured": true,
+  "available": true,
+  "operatorRequired": false,
+  "operatorAvailable": false,
+  "shortDescription": "2.6 t tandem vibratory roller for asphalt and light soil compaction.",
+  "description": "A compact tandem roller with two vibrating drums for driveways, paths and small road repairs. Water sprinkler system prevents asphalt pick-up.",
+  "images": [
+    {
+      "src": null,
+      "alt": "BOMAG BW 120 AD-5 tandem roller compacting asphalt"
+    }
+  ],
+  "specs": {
+    "operatingWeightKg": 2600,
+    "enginePowerKw": 18.5,
+    "fuelType": "diesel",
+    "emissionStandard": "EU Stage V",
+    "dimensionsMm": {
+      "length": 2900,
+      "width": 1250,
+      "height": 2300
+    },
+    "drumWidthMm": 1200,
+    "centrifugalForceKn": 26,
+    "frequencyHz": 60,
+    "workingWidthMm": 1200
+  },
+  "features": ["Two vibrating drums", "Water sprinkler system"],
+  "included": [
+    "Fuel-filled on delivery",
+    "Basic operator briefing",
+    "Insurance against third-party damage"
+  ],
+  "notIncluded": [
+    "Fuel during the rental",
+    "Transport to and from site unless booked",
+    "Damage caused by misuse"
+  ],
+  "pricing": {
+    "currency": "PLN",
+    "vatRate": 0.23,
+    "deposit": 4000,
+    "tiers": [
+      {
+        "fromDays": 1,
+        "toDays": 1,
+        "perDay": 750
+      },
+      {
+        "fromDays": 2,
+        "toDays": 3,
+        "perDay": 690
+      },
+      {
+        "fromDays": 4,
+        "toDays": 7,
+        "perDay": 620
+      },
+      {
+        "fromDays": 8,
+        "toDays": 30,
+        "perDay": 560
+      },
+      {
+        "fromDays": 31,
+        "toDays": null,
+        "perDay": 500
+      }
+    ],
+    "extras": {
+      "operatorPerDay": null,
+      "deliveryPerKm": 6,
+      "extraHour": 90
+    }
+  },
+  "datasheetUrl": null
+}
