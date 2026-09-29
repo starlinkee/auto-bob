@@ -7,3 +7,6 @@ workspaces/
 playwright-report/
 test-results/
 __pycache__/
+.next/
+next-env.d.ts
+tsconfig.tsbuildinfo
