@@ -1,0 +1,6 @@
+{
+  "fuelPolicy": "Machines are handed over with a full tank and returned with a full tank. Fuel used during the rental is charged to the customer, or refilled by the customer before return.",
+  "workingHoursPerDay": 8,
+  "cleaningFee": 150,
+  "damagePolicy": "Normal wear is covered by the rental price. Damage caused by misuse, overloading or negligence is repaired at cost and deducted from the deposit; anything above the deposit is invoiced."
+}
