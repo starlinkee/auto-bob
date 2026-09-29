@@ -75,14 +75,14 @@ Write the spec to the scratchpad as JSON (`{"project_url": ..., "tickets": [{key
 
 The script creates **everything in Backlog first**, fills in the identifiers, adds the relations, and only then moves the **root tickets (no blockers)** to `Todo`. **Dependent tickets stay in Backlog.** `scripts/linear_sync.py` (`promote_unblocked`) moves each one to Todo once every blocker's PR is merged on GitHub.
 
-Do not activate dependents yourself. In the Pixels run (2026-09-29), dependents in Todo were started anyway: Contrabass does not count a blocker in Backlog or In Review as open. The worker's "Zero" precheck then stopped each run (`task failed`, 0 tokens), and Contrabass retried it over and over. Never use In Progress either: the reconciler treats an In Progress ticket without a Contrabass run as abandoned. The script is idempotent by title and re-checks Linear before retrying a failed create, because Linear often times out or returns 503 and the create may have succeeded anyway. If it fails partway, **just re-run it**; never create tickets with ad-hoc calls.
+Do not activate dependents yourself. In an earlier run of this pipeline, dependents in Todo were started anyway: Contrabass does not count a blocker in Backlog or In Review as open. The worker's "Zero" precheck then stopped each run (`task failed`, 0 tokens), and Contrabass retried it over and over. Never use In Progress either: the reconciler treats an In Progress ticket without a Contrabass run as abandoned. The script is idempotent by title and re-checks Linear before retrying a failed create, because Linear often times out or returns 503 and the create may have succeeded anyway. If it fails partway, **just re-run it**; never create tickets with ad-hoc calls.
 
 `LINEAR_API_KEY` lives in WSL's `~/.bashrc` and is not in the Windows environment. On this machine, run the script through WSL:
-`wsl -d Ubuntu -e bash -ic 'cd /mnt/c/<repo path> && python3 .claude/skills/plan-feature/linear_batch.py /mnt/c/<spec path>'`
+`wsl -d auto-bob -e bash -ic 'cd ~/auto-bob && python3 .claude/skills/plan-feature/linear_batch.py /mnt/c/<spec path>'`
 (`-i` is needed, because `.bashrc` is not read by non-interactive shells).
 
 ## 6. Verify and report
 
 - Check the script's final table: every ticket is in the expected state with the expected blockers.
-- A minute later, check that only the root tickets started: run the Linear query again, and `wsl -d Ubuntu -e bash -ic 'cd <repo> && bash scripts/cb status'`. If a dependent is running or is showing repeated `task failed` retries, move it back to Backlog and tell the user.
+- A minute later, check that only the root tickets started: run the Linear query again, and `wsl -d auto-bob -e bash -ic 'cd ~/auto-bob && bash scripts/cb status'`. If a dependent is running or is showing repeated `task failed` retries, move it back to Backlog and tell the user.
 - Report to the user: the feature idea in two or three sentences, the tree as an ASCII diagram with the identifiers, why it is shaped that way (parallel leaves, conflict avoidance), and anything that went wrong along the way.

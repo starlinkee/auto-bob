@@ -5,3 +5,5 @@ reviewed by the AI jury and merged by the reconciler. See `docs/agents.md` for h
 and `docs/WSL_SETUP.md` for how to run the pipeline.
 
     npm ci && npx playwright install chromium && npm run test:ai
+
+Current state of the app and the pipeline: `docs/STATE.md`.
