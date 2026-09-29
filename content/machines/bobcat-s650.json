@@ -1,0 +1,85 @@
+{
+  "slug": "bobcat-s650",
+  "name": "Bobcat S650 Skid Steer Loader",
+  "category": "skid-steer",
+  "manufacturer": "Bobcat",
+  "model": "S650",
+  "year": 2022,
+  "featured": true,
+  "available": true,
+  "operatorRequired": false,
+  "operatorAvailable": true,
+  "shortDescription": "Radial-lift skid steer with 1,000 kg rated capacity and high-flow-ready hydraulics.",
+  "description": "A tough, manoeuvrable skid steer for grading, loading and clearing. Accepts a wide range of attachments through the universal Bobcat quick-attach.",
+  "images": [
+    {
+      "src": null,
+      "alt": "Bobcat S650 skid steer loader with a bucket"
+    }
+  ],
+  "specs": {
+    "operatingWeightKg": 3500,
+    "enginePowerKw": 55,
+    "fuelType": "diesel",
+    "emissionStandard": "EU Stage V",
+    "dimensionsMm": {
+      "length": 3400,
+      "width": 1830,
+      "height": 2000
+    },
+    "ratedOperatingCapacityKg": 1000,
+    "bucketVolumeM3": 0.5,
+    "breakoutForceKn": 24,
+    "liftHeightM": 3.1,
+    "tippingLoadKg": 2000
+  },
+  "features": ["Universal quick-attach", "Enclosed cab with heating", "Two-speed travel"],
+  "included": [
+    "Fuel-filled on delivery",
+    "Basic operator briefing",
+    "Insurance against third-party damage"
+  ],
+  "notIncluded": [
+    "Fuel during the rental",
+    "Transport to and from site unless booked",
+    "Damage caused by misuse"
+  ],
+  "pricing": {
+    "currency": "PLN",
+    "vatRate": 0.23,
+    "deposit": 4000,
+    "tiers": [
+      {
+        "fromDays": 1,
+        "toDays": 1,
+        "perDay": 800
+      },
+      {
+        "fromDays": 2,
+        "toDays": 3,
+        "perDay": 730
+      },
+      {
+        "fromDays": 4,
+        "toDays": 7,
+        "perDay": 660
+      },
+      {
+        "fromDays": 8,
+        "toDays": 30,
+        "perDay": 600
+      },
+      {
+        "fromDays": 31,
+        "toDays": null,
+        "perDay": 540
+      }
+    ],
+    "extras": {
+      "operatorPerDay": 420,
+      "deliveryPerKm": 6,
+      "extraHour": 100
+    }
+  },
+  "datasheetUrl": null
+}

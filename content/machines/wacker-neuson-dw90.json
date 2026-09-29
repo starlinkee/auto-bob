@@ -1,0 +1,84 @@
+{
+  "slug": "wacker-neuson-dw90",
+  "name": "Wacker Neuson DW90 Site Dumper",
+  "category": "dumper",
+  "manufacturer": "Wacker Neuson",
+  "model": "DW90",
+  "year": 2021,
+  "featured": true,
+  "available": true,
+  "operatorRequired": false,
+  "operatorAvailable": false,
+  "shortDescription": "9 t swivel-skip dumper for moving spoil and aggregate across site.",
+  "description": "A 9 tonne articulated site dumper with a swivel skip and four-wheel drive. Self-drive hire only.",
+  "images": [
+    {
+      "src": null,
+      "alt": "Wacker Neuson DW90 site dumper tipping soil"
+    }
+  ],
+  "specs": {
+    "operatingWeightKg": 5900,
+    "enginePowerKw": 55,
+    "fuelType": "diesel",
+    "emissionStandard": "EU Stage V",
+    "dimensionsMm": {
+      "length": 4900,
+      "width": 2200,
+      "height": 2700
+    },
+    "payloadT": 9,
+    "bodyVolumeM3": 5.2,
+    "maxSpeedKmh": 25,
+    "driveType": "4x4"
+  },
+  "features": ["Swivel skip", "ROPS/FOPS canopy", "Four-wheel drive"],
+  "included": [
+    "Fuel-filled on delivery",
+    "Basic operator briefing",
+    "Insurance against third-party damage"
+  ],
+  "notIncluded": [
+    "Fuel during the rental",
+    "Transport to and from site unless booked",
+    "Damage caused by misuse"
+  ],
+  "pricing": {
+    "currency": "PLN",
+    "vatRate": 0.23,
+    "deposit": 4000,
+    "tiers": [
+      {
+        "fromDays": 1,
+        "toDays": 1,
+        "perDay": 700
+      },
+      {
+        "fromDays": 2,
+        "toDays": 3,
+        "perDay": 640
+      },
+      {
+        "fromDays": 4,
+        "toDays": 7,
+        "perDay": 580
+      },
+      {
+        "fromDays": 8,
+        "toDays": 30,
+        "perDay": 520
+      },
+      {
+        "fromDays": 31,
+        "toDays": null,
+        "perDay": 460
+      }
+    ],
+    "extras": {
+      "operatorPerDay": null,
+      "deliveryPerKm": 6,
+      "extraHour": 90
+    }
+  },
+  "datasheetUrl": null
+}

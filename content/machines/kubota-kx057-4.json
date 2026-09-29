@@ -1,0 +1,96 @@
+{
+  "slug": "kubota-kx057-4",
+  "name": "Kubota KX057-4 Midi Excavator",
+  "category": "excavator",
+  "manufacturer": "Kubota",
+  "model": "KX057-4",
+  "year": 2022,
+  "featured": true,
+  "available": true,
+  "operatorRequired": false,
+  "operatorAvailable": true,
+  "shortDescription": "5.7 t midi excavator with zero tail swing, ideal for trenching in tight spaces.",
+  "description": "A versatile 5.7 tonne midi excavator with a reduced footprint and a hydraulic quick coupler. It handles trenches, foundations and landscaping around existing buildings with precise control and low fuel use.",
+  "images": [
+    {
+      "src": null,
+      "alt": "Kubota KX057-4 midi excavator digging a trench"
+    }
+  ],
+  "specs": {
+    "operatingWeightKg": 5700,
+    "enginePowerKw": 32.8,
+    "fuelType": "diesel",
+    "emissionStandard": "EU Stage V",
+    "dimensionsMm": {
+      "length": 5300,
+      "width": 1960,
+      "height": 2540
+    },
+    "transportDimensionsMm": {
+      "length": 5300,
+      "width": 1960,
+      "height": 2540
+    },
+    "bucketCapacityM3": 0.18,
+    "maxDiggingDepthM": 3.8,
+    "maxReachM": 6.3,
+    "maxDumpHeightM": 4.2,
+    "trackWidthMm": 400,
+    "tailSwing": "zero",
+    "quickCoupler": true
+  },
+  "features": [
+    "Zero tail swing",
+    "Hydraulic quick coupler",
+    "Auxiliary hydraulics for breaker or tiltrotator"
+  ],
+  "included": [
+    "Fuel-filled on delivery",
+    "Basic operator briefing",
+    "Insurance against third-party damage"
+  ],
+  "notIncluded": [
+    "Fuel during the rental",
+    "Transport to and from site unless booked",
+    "Damage caused by misuse"
+  ],
+  "pricing": {
+    "currency": "PLN",
+    "vatRate": 0.23,
+    "deposit": 5000,
+    "tiers": [
+      {
+        "fromDays": 1,
+        "toDays": 1,
+        "perDay": 900
+      },
+      {
+        "fromDays": 2,
+        "toDays": 3,
+        "perDay": 820
+      },
+      {
+        "fromDays": 4,
+        "toDays": 7,
+        "perDay": 740
+      },
+      {
+        "fromDays": 8,
+        "toDays": 30,
+        "perDay": 660
+      },
+      {
+        "fromDays": 31,
+        "toDays": null,
+        "perDay": 580
+      }
+    ],
+    "extras": {
+      "operatorPerDay": 450,
+      "deliveryPerKm": 6,
+      "extraHour": 120
+    }
+  },
+  "datasheetUrl": null
+}

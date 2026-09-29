@@ -1,0 +1,78 @@
+{
+  "slug": "auger-torque-at-3000",
+  "name": "Auger Torque AT 3000 Earth Auger",
+  "category": "attachment",
+  "manufacturer": "Auger Torque",
+  "model": "AT 3000",
+  "year": 2023,
+  "featured": false,
+  "available": true,
+  "operatorRequired": false,
+  "operatorAvailable": false,
+  "shortDescription": "Hydraulic auger drive for fence posts and piles, fits skid steers.",
+  "description": "A hydraulic earth auger drive with a 300 mm bit for drilling post holes and small piles.",
+  "images": [
+    {
+      "src": null,
+      "alt": "Auger Torque AT 3000 earth auger drilling a post hole"
+    }
+  ],
+  "specs": {
+    "dimensionsMm": {
+      "length": 1400,
+      "width": 400,
+      "height": 400
+    },
+    "compatibleMachines": ["Bobcat S650"],
+    "weightKg": 110
+  },
+  "features": ["300 mm bit included", "Universal quick-attach"],
+  "included": [
+    "Fuel-filled on delivery",
+    "Basic operator briefing",
+    "Insurance against third-party damage"
+  ],
+  "notIncluded": [
+    "Fuel during the rental",
+    "Transport to and from site unless booked",
+    "Damage caused by misuse"
+  ],
+  "pricing": {
+    "currency": "PLN",
+    "vatRate": 0.23,
+    "deposit": 1200,
+    "tiers": [
+      {
+        "fromDays": 1,
+        "toDays": 1,
+        "perDay": 200
+      },
+      {
+        "fromDays": 2,
+        "toDays": 3,
+        "perDay": 185
+      },
+      {
+        "fromDays": 4,
+        "toDays": 7,
+        "perDay": 170
+      },
+      {
+        "fromDays": 8,
+        "toDays": 30,
+        "perDay": 150
+      },
+      {
+        "fromDays": 31,
+        "toDays": null,
+        "perDay": 130
+      }
+    ],
+    "extras": {
+      "operatorPerDay": null,
+      "deliveryPerKm": 4,
+      "extraHour": 30
+    }
+  },
+  "datasheetUrl": null
+}

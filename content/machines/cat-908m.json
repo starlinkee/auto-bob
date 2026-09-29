@@ -1,0 +1,85 @@
+{
+  "slug": "cat-908m",
+  "name": "CAT 908M Compact Wheel Loader",
+  "category": "loader",
+  "manufacturer": "Caterpillar",
+  "model": "908M",
+  "year": 2022,
+  "featured": false,
+  "available": true,
+  "operatorRequired": false,
+  "operatorAvailable": true,
+  "shortDescription": "Compact articulated loader for tight yards and building sites.",
+  "description": "A 5.5 tonne compact wheel loader with a 1.0 cubic metre bucket. Nimble enough for narrow sites, strong enough for daily loading.",
+  "images": [
+    {
+      "src": null,
+      "alt": "CAT 908M compact wheel loader on a building site"
+    }
+  ],
+  "specs": {
+    "operatingWeightKg": 5500,
+    "enginePowerKw": 55,
+    "fuelType": "diesel",
+    "emissionStandard": "EU Stage V",
+    "dimensionsMm": {
+      "length": 5600,
+      "width": 1900,
+      "height": 2800
+    },
+    "ratedOperatingCapacityKg": 2100,
+    "bucketVolumeM3": 1,
+    "breakoutForceKn": 58,
+    "liftHeightM": 3.3,
+    "tippingLoadKg": 4200
+  },
+  "features": ["Joystick steering option", "Compact turning radius"],
+  "included": [
+    "Fuel-filled on delivery",
+    "Basic operator briefing",
+    "Insurance against third-party damage"
+  ],
+  "notIncluded": [
+    "Fuel during the rental",
+    "Transport to and from site unless booked",
+    "Damage caused by misuse"
+  ],
+  "pricing": {
+    "currency": "PLN",
+    "vatRate": 0.23,
+    "deposit": 5000,
+    "tiers": [
+      {
+        "fromDays": 1,
+        "toDays": 1,
+        "perDay": 850
+      },
+      {
+        "fromDays": 2,
+        "toDays": 3,
+        "perDay": 780
+      },
+      {
+        "fromDays": 4,
+        "toDays": 7,
+        "perDay": 700
+      },
+      {
+        "fromDays": 8,
+        "toDays": 30,
+        "perDay": 640
+      },
+      {
+        "fromDays": 31,
+        "toDays": null,
+        "perDay": 570
+      }
+    ],
+    "extras": {
+      "operatorPerDay": 450,
+      "deliveryPerKm": 6,
+      "extraHour": 110
+    }
+  },
+  "datasheetUrl": null
+}

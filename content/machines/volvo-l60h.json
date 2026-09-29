@@ -1,0 +1,89 @@
+{
+  "slug": "volvo-l60h",
+  "name": "Volvo L60H Wheel Loader",
+  "category": "loader",
+  "manufacturer": "Volvo",
+  "model": "L60H",
+  "year": 2020,
+  "featured": true,
+  "available": true,
+  "operatorRequired": false,
+  "operatorAvailable": true,
+  "shortDescription": "12 t articulated wheel loader for aggregate, soil and site logistics.",
+  "description": "A robust 12 tonne wheel loader with a 2.2 cubic metre bucket and high-lift geometry. Suited to loading trucks, moving aggregate and general yard work.",
+  "images": [
+    {
+      "src": null,
+      "alt": "Volvo L60H wheel loader carrying a bucket of gravel"
+    }
+  ],
+  "specs": {
+    "operatingWeightKg": 11800,
+    "enginePowerKw": 129,
+    "fuelType": "diesel",
+    "emissionStandard": "EU Stage IV",
+    "dimensionsMm": {
+      "length": 7300,
+      "width": 2500,
+      "height": 3300
+    },
+    "ratedOperatingCapacityKg": 4600,
+    "bucketVolumeM3": 2.2,
+    "breakoutForceKn": 100,
+    "liftHeightM": 3.9,
+    "tippingLoadKg": 8200
+  },
+  "features": [
+    "Load-sensing hydraulics",
+    "Air-conditioned cab",
+    "Quick-attach pallet forks available"
+  ],
+  "included": [
+    "Fuel-filled on delivery",
+    "Basic operator briefing",
+    "Insurance against third-party damage"
+  ],
+  "notIncluded": [
+    "Fuel during the rental",
+    "Transport to and from site unless booked",
+    "Damage caused by misuse"
+  ],
+  "pricing": {
+    "currency": "PLN",
+    "vatRate": 0.23,
+    "deposit": 9000,
+    "tiers": [
+      {
+        "fromDays": 1,
+        "toDays": 1,
+        "perDay": 1400
+      },
+      {
+        "fromDays": 2,
+        "toDays": 3,
+        "perDay": 1280
+      },
+      {
+        "fromDays": 4,
+        "toDays": 7,
+        "perDay": 1150
+      },
+      {
+        "fromDays": 8,
+        "toDays": 30,
+        "perDay": 1050
+      },
+      {
+        "fromDays": 31,
+        "toDays": null,
+        "perDay": 950
+      }
+    ],
+    "extras": {
+      "operatorPerDay": 450,
+      "deliveryPerKm": 8,
+      "extraHour": 160
+    }
+  },
+  "datasheetUrl": null
+}
