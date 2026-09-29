@@ -1,0 +1,28 @@
+{
+  "story": [
+    "BuildRent began in 2009 with two excavators and a borrowed van, when a small family firm in Warsaw noticed that local builders kept waiting weeks for machines that sat idle in someone else's yard.",
+    "Today we run a fleet of excavators, loaders, compactors and lifting equipment from a single depot, and we still answer the phone ourselves. Contractors, municipalities and homeowners rent from us because the machine they book is the machine that turns up, on time and ready to work."
+  ],
+  "mission": "To make professional construction machinery easy to rent: honest prices, well-maintained equipment and people who understand the job you are trying to finish.",
+  "safety": [
+    "Every machine is inspected and serviced in our own workshop before each rental and after it returns.",
+    "Operators receive a hands-on handover covering controls, load limits and daily checks.",
+    "Safety equipment such as seat belts, beacons, back-up alarms and fire extinguishers is checked on every delivery.",
+    "Service records for each machine are kept and available to customers on request."
+  ],
+  "certifications": [
+    { "name": "ISO 9001 Quality Management", "issuer": "TÜV Rheinland", "year": 2019 },
+    {
+      "name": "ISO 45001 Occupational Health and Safety",
+      "issuer": "Bureau Veritas",
+      "year": 2021
+    },
+    {
+      "name": "UDT Technical Inspection Authorisation",
+      "issuer": "Urząd Dozoru Technicznego",
+      "year": 2018
+    }
+  ],
+  "teamImage": { "src": null, "alt": "The BuildRent team in front of the depot" },
+  "depotImage": { "src": null, "alt": "The BuildRent depot with machines ready for delivery" }
+}
