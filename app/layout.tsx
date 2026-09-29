@@ -7,6 +7,7 @@ import "./globals.css";
 import "./theme.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { LocalBusinessJsonLd } from "@/components/LocalBusinessJsonLd";
 import { ThemeScript } from "@/components/ThemeScript";
 import { getSite } from "@/lib/site";
 
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           {children}
         </main>
         <Footer />
+        <LocalBusinessJsonLd />
       </body>
     </html>
   );
