@@ -1,0 +1,82 @@
+name: AI Merge Doctor
+run-name: "Merge Doctor PR #${{ github.event.pull_request.number }}"
+# pull_request_target (not pull_request): a PR with merge conflicts has no
+# merge commit, and GitHub does not run pull_request workflows for it - which
+# is exactly the case this workflow exists for. The scripts run from the base
+# branch (checked out to _trusted); the PR branch is checked out separately and
+# only Opus and the test suite touch it. Neither checkout keeps credentials and
+# Claude runs without GitHub/Linear secrets in its environment: the trusted script
+# pushes after verifying the result, then starts the jury on the new head.
+# Same-repo branches only, so a fork can never get its code run with secrets.
+on:
+  pull_request_target:
+    types: [labeled]
+jobs:
+  merge-doctor:
+    if: >-
+      github.event.label.name == 'needs-expert-review' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    concurrency:
+      group: merge-doctor-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
+    permissions:
+      pull-requests: write
+      issues: write      # labels: needs-human, and releasing needs-expert-review
+      contents: write
+      actions: write     # start the jury on the pushed head (workflow_dispatch)
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: _trusted
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+          persist-credentials: false
+          path: pr
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install -g @anthropic-ai/claude-code
+      - name: Install dependencies and browser for the test suite
+        working-directory: pr
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+      - name: Rebase, resolve, verify, push
+        id: doctor
+        working-directory: pr
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LINEAR_API_KEY: ${{ secrets.LINEAR_API_KEY }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+        run: python ../_trusted/.github/scripts/run_merge_doctor.py
+      # The script comments on its own failures. This covers the rest: a setup step failed
+      # (the script never ran) or the job was cancelled or timed out while it ran.
+      - name: Report a run that ended without the doctor's own comment
+        if: ${{ !success() && steps.doctor.outcome != 'failure' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          OUTCOME: ${{ steps.doctor.outcome }}
+        run: |
+          if [ "$OUTCOME" = skipped ]; then what="a setup step failed before the doctor started"
+          else what="the doctor step ended as '$OUTCOME' (cancelled or timed out)"; fi
+          printf '**AI Merge Doctor (Opus)**\n\nThis run ended early: %s. Nothing was pushed; the reconciler will retry.\n\n_Run: %s_\n' \
+            "$what" "$RUN_URL" | gh pr comment ${{ github.event.pull_request.number }} --repo ${{ github.repository }} --body-file - || true
+      # The label means "a doctor run is pending or running": the reconciler never merges
+      # while it is set, and re-adds it for the next attempt.
+      - name: Release the label
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh issue edit ${{ github.event.pull_request.number }} --repo ${{ github.repository }} --remove-label needs-expert-review || true

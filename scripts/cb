@@ -1,0 +1,136 @@
+#!/usr/bin/env bash
+# Control script for the Contrabass pipeline (run inside WSL).
+#   cb start     start Contrabass detached in tmux session "cb"
+#   cb attach    open the TUI (detach with Ctrl-b d, do NOT press q)
+#   cb stop      stop Contrabass and any agent (omc-team-*) sessions
+#   cb restart   stop + start
+#                stop/restart/clean REFUSE while agents are running, because
+#                shutting Contrabass down deletes the agents' workspaces and
+#                their unpushed work. Add --force to override.
+#   cb status    show sessions and the TUI header
+#   cb app-log   output of the app runner (scripts/app_sync.sh, http://localhost:3001)
+#   cb tunnel-log  output of the Cloudflare Tunnel publishing the pages (scripts/tunnel.yml)
+#   cb sync-log  last lines of the Linear reconciler (scripts/linear_sync.py)
+#   cb sync-restart  restart only the reconciler (safe while agents run)
+#   cb agents    list agent sessions; "cb agents <session>" attaches to one
+#   cb watch     live output of every worker, the omc manager and Contrabass in one stream
+#                ("cb watch AUTO-34" for one ticket; "cb watch --help" for options)
+#   cb clean     stop and remove stale workspaces/worktrees/state (asks first)
+#   cb           same as: cb start && cb attach
+set -euo pipefail
+
+REPO="${CB_REPO:-$HOME/auto-bob}"
+SESSION=cb
+export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin"
+# Playwright's Chromium needs libnss3/libnspr4/libasound2; extracted without root (see docs/WSL_SETUP.md).
+PW_LIBS="$HOME/.local/playwright-libs/usr/lib/x86_64-linux-gnu"
+[ -d "$PW_LIBS" ] && export LD_LIBRARY_PATH="$PW_LIBS${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+SYNC=linearsync
+APP=app  # scripts/app_sync.sh: runs master at localhost:3001 and follows merges
+TUNNEL=tunnel  # cloudflared: https://<page>.<your-domain> -> the app (scripts/tunnel.yml)
+
+# ~/.bashrc is not read by non-interactive shells, so load the key explicitly.
+if [ -z "${LINEAR_API_KEY:-}" ] && [ -f "$HOME/.bashrc" ]; then
+  eval "$(grep -E '^export LINEAR_' "$HOME/.bashrc" || true)"
+fi
+
+running() { tmux has-session -t "$SESSION" 2>/dev/null; }
+
+# Keeps Linear honest: Contrabass marks a finished (or shut down) ticket Done even when
+# the PR is unmerged or missing; this moves it to In Review / Todo / Done by PR state.
+start_sync() {
+  tmux has-session -t "=$SYNC" 2>/dev/null && return
+  ( cd "$REPO" && setsid nohup tmux new-session -d -s "$SYNC" -e "LINEAR_API_KEY=$LINEAR_API_KEY" \
+      "python3 scripts/linear_sync.py; echo 'linear_sync exited'; sleep 600" >/dev/null 2>&1 </dev/null )
+}
+
+# Agents are busy when Contrabass itself reports Agents: N/.. with N > 0. Leftover
+# omc-team-* sessions of finished runs do not count (they are stale and safe to kill).
+busy() {
+  running && tmux capture-pane -p -t "$SESSION" 2>/dev/null | grep -qE 'Agents: [1-9][0-9]*/'
+}
+
+guard() {
+  if busy && [ "${FORCE:-0}" != 1 ]; then
+    echo "Refusing: agents are running. Stopping now would delete their workspaces and unpushed work."
+    echo "Check with 'cb status', wait for them to finish, or repeat with --force."
+    exit 1
+  fi
+}
+
+start() {
+  [ -n "${LINEAR_API_KEY:-}" ] || { echo "LINEAR_API_KEY is not set (add it to ~/.bashrc)"; exit 1; }
+  for c in tmux contrabass omc claude; do
+    command -v "$c" >/dev/null || { echo "missing: $c"; exit 1; }
+  done
+  if running; then echo "already running (cb attach)"; return; fi
+  cd "$REPO"
+  # env -u TMUX: otherwise omc adopts the TUI window as its leader and no worker starts.
+  # sleep keeps the pane open so a startup error stays readable.
+  start_sync
+  setsid nohup tmux new-session -d -s "$SESSION" -x 200 -y 50 \
+    -e "LINEAR_API_KEY=$LINEAR_API_KEY" -e "LD_LIBRARY_PATH=${LD_LIBRARY_PATH:-}" -e "PATH=$PATH" \
+    "env -u TMUX -u TMUX_PANE contrabass --config .contrabass/WORKFLOW.md --port 8081; echo; echo 'contrabass exited'; sleep 600" \
+    >/dev/null 2>&1 </dev/null
+  if ! tmux has-session -t "=$APP" 2>/dev/null; then
+    setsid nohup tmux new-session -d -s "$APP" "bash scripts/app_sync.sh; echo 'app_sync exited'; sleep 600" >/dev/null 2>&1 </dev/null
+  fi
+  # Only on a machine that holds the tunnel's credentials (see scripts/tunnel.yml).
+  if command -v cloudflared >/dev/null && [ -f "$HOME/.cloudflared/cert.pem" ] && ! tmux has-session -t "=$TUNNEL" 2>/dev/null; then
+    setsid nohup tmux new-session -d -s "$TUNNEL" \
+      "cloudflared tunnel --no-autoupdate --config scripts/tunnel.yml run; echo 'cloudflared exited'; sleep 600" >/dev/null 2>&1 </dev/null
+  fi
+  sleep 3
+  running && echo "started (cb attach to view; cb sync-log for the Linear reconciler)" || { echo "failed to start"; exit 1; }
+}
+
+stop() {
+  for s in $(tmux ls -F '#S' 2>/dev/null | grep -E "^($SESSION|$SYNC|$APP|$TUNNEL)$|^omc-team-" || true); do
+    tmux kill-session -t "$s"
+  done
+  echo "stopped"
+}
+
+FORCE=0
+for a in "$@"; do [ "$a" = --force ] && FORCE=1; done
+
+case "${1:-}" in
+  start)   start ;;
+  stop)    guard; stop ;;
+  restart) guard; stop; start ;;
+  attach)  exec tmux attach -t "$SESSION" ;;
+  status)
+    tmux ls 2>/dev/null || echo "no tmux sessions"
+    running && tmux capture-pane -p -t "$SESSION" | grep -E 'Agents|AUTO-|Tokens|rror' | cut -c1-160 || true
+    H="$HOME/.cb-linear-sync.health"
+    if [ -f "$H" ] && [ $(( $(date +%s) - $(stat -c %Y "$H") )) -lt 600 ]; then
+      echo "reconciler: healthy (last good round $(( $(date +%s) - $(stat -c %Y "$H") ))s ago)"
+    else
+      echo "!! reconciler: NO successful round for 10+ min - see 'cb sync-log'"
+    fi ;;
+  app-log) tmux capture-pane -p -t "=$APP:" -S -200 | grep -v '^\s*$' | tail -"${2:-30}" ;;
+  tunnel-log) tmux capture-pane -p -t "=$TUNNEL:" -S -200 | grep -v '^\s*$' | tail -"${2:-30}" ;;
+  sync-restart)
+    [ -n "${LINEAR_API_KEY:-}" ] || { echo "LINEAR_API_KEY is not set (add it to ~/.bashrc)"; exit 1; }
+    tmux kill-session -t "=$SYNC" 2>/dev/null || true
+    start_sync
+    echo "reconciler restarted (cb sync-log)" ;;
+  sync-log) tmux capture-pane -p -t "=$SYNC:" -S -200 | grep -v '^\s*$' | tail -"${2:-30}" ;;
+  agents)
+    if [ -n "${2:-}" ]; then exec tmux attach -t "$2"; fi
+    tmux ls -F '#S' 2>/dev/null | grep '^omc-team-' || echo "no agent sessions running" ;;
+  watch)   shift; exec python3 "$REPO/scripts/agent_watch.py" "$@" ;;
+  clean)
+    read -r -p "Stop everything and delete ALL workspaces, state and symphony/* local branches? [y/N] " a
+    [ "$a" = y ] || exit 0
+    guard
+    stop
+    cd "$REPO"
+    for w in workspaces/*; do [ -e "$w" ] && git worktree remove --force "$w"; done
+    git worktree prune
+    git branch --list 'symphony/*' | xargs -r git branch -D
+    rm -rf .contrabass/state
+    echo "clean" ;;
+  ""|run)  start; exec tmux attach -t "$SESSION" ;;
+  *) sed -n 2,19p "$0"; exit 1 ;;
+esac

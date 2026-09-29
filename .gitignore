@@ -1,0 +1,9 @@
+node_modules/
+.env
+*.log
+.contrabass/state/
+workspaces/
+.omc/
+playwright-report/
+test-results/
+__pycache__/
