@@ -169,7 +169,8 @@ test.describe("fleet catalogue", () => {
     await page.locator("#fleet-reset").click();
     await expectCards(page, machines);
     await expect(page.locator("#fleet-search")).toHaveValue("");
-    expect(new URL(page.url()).search).toBe("");
+    // router.replace commits the URL asynchronously (in a transition), so wait for it.
+    await expect(page).toHaveURL((url) => url.pathname === "/fleet" && url.search === "");
   });
 
   test("URL with several parameters restores every control", async ({ page }) => {
