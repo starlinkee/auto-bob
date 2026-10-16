@@ -27,11 +27,11 @@ jobs:
       contents: write
       actions: write     # start the jury on the pushed head (workflow_dispatch)
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           path: _trusted
           persist-credentials: false
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
